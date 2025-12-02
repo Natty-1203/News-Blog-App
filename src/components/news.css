@@ -1,0 +1,168 @@
+.news{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    row-gap: 2rem;
+    font-size: 2rem;
+    color: white;
+    width: 100%;
+    height: 100%;
+    .news-header{
+        width: 100%;
+        min-height: 7rem;
+        background-color: #111214;
+        border-radius: 1rem 1rem 0 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 4rem;
+        .logo{
+            font-family: "Bebas Neue", sans-serif;
+            font-size: 5rem;
+            color: #dddddd;
+            letter-spacing: 0.2rem;
+        }
+        .search-bar{
+            position: relative;
+        }
+        .search-bar input{
+            width: 25rem;
+            height: 4rem;
+            border: none;
+            border-radius: 5rem;
+            background-color: #060709;
+            padding: 0 4rem 0 2rem;
+            color: #dddddd;
+            transition: wudth 0.3s ease;
+
+            &:focus{
+                width: 35rem;
+                outline: none;
+                &::placeholder{
+                    color: transparent;
+                }
+            }
+
+        }
+        .search-bar button{
+            background-color: transparent;
+            border: none;
+            position: absolute;
+            top: 50%;
+            right: 1rem;
+        transform: translateY(-50%);
+        color: #bbbbbb;
+        font-size: 1.8rem;
+        }
+    }
+    .news-content{
+        display: flex;
+        column-gap: 2rem;
+        height: calc(100% - 16rem);
+        
+        .navbar{
+            width: 18rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            row-gap: 2rem;
+            .user{
+                width: 100%;
+                height: 20%;
+                background-color: #111214;
+                border-radius: 1rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                row-gap: 1rem;
+                cursor: pointer;
+
+                img{
+                    width: 7rem;
+                    aspect-ratio: 1;
+                    object-fit: cover;
+                    border-radius: 50%;
+                }
+                p{
+                    font-size: 1.5rem;
+                    font-family: "comfortaa", sans-serif;
+                    color: #dddddd;
+                }
+            }
+            .categories{
+                width: 100%;
+                height: calc(80% - 2rem);
+                background-color: #111214;
+                border-radius: 1rem;
+                display: flex;
+                flex-direction: column;
+                row-gap: 2rem;
+                padding: 2rem;
+                .nav-heading{
+                    font-size: clame(1.5rem, 2.5cqi, 3rem);
+                    font-family: "Bebas Neue", sans-serif;
+                    color: #dddddd;
+                    margin-bottom: 2rem;
+                    letter-spacing: 0.2rem;
+                }
+                .nav-links{
+                    display: flex;
+                    flex-direction: column;
+                    row-gap: 2rem;
+                    .nav-link{
+                        font-size: 1.5rem;
+                        font-weight: 300;
+                        color: #dddddd;
+                        text-transform: uppercase;
+                        letter-spacing: 0.1rem;
+                        display: flex;
+                        align-items: center;
+                        i{
+                            font-size: 1.7rem;
+                            margin-left: 1rem;
+                        }
+
+                    }
+                }
+            }
+           
+        }
+         .news-section{
+                width: clamp(30rem, 43cqi, 40%);
+                height: 100%;
+                border-radius: 1rem;
+                .headline{
+                    width: 100%;
+                    height: calc(50% - 2rem);
+                    background-color: #111214;
+                    border-radius: 1rem;
+                    margin-bottom: 1rem;
+                }
+                .news-grid{
+                    width: 100%;
+                    height: 50%;
+                    background-color: #111214;
+                    border-radius: 0 0 1rem 1rem;
+                }
+            }
+            .my-blogs{
+                width: clamp(20rem, 27cqi, 28%);
+                height: 100%;
+                background-color: #111214;
+                border-radius: 1rem;
+            }
+            .weather-calander{
+               flex: 1;
+               display: flex;
+               flex-direction: column;
+               row-gap: 2rem;
+            }
+    }
+    .news-footer{
+        width: 100%;
+        min-height: 5rem;
+        background-color: #111214;
+        border-radius: 0 0 1rem 1rem;
+    }
+}
