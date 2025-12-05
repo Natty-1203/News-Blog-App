@@ -1,0 +1,68 @@
+.modal-overlay{
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+
+    .modal-content{
+        position: relative;
+        width: 90%;
+        max-width: 60rem;
+        height: auto;
+        max-height: 100%;
+        background-color: #111214;
+        padding: 4rem;
+        border-radius: 1rem;
+        box-shadow: 0 0 1rem 1rem rgba(0, 0, 0, 0.7);
+
+        .close-button{
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+            color: #ffffff;
+            cursor: pointer;
+        }
+        .bookMark-head{
+            font-family: "bebas neue", sans-serif;
+            font-size: 3rem;
+            font-weight: 300;
+            letter-spacing: 0.1rem;
+            margin-bottom: 2rem;
+            color: #dddddd;
+        }
+        .bookMark-list{
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            .bookMark-item{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                column-gap: 2rem;
+                cursor: pointer;
+                img{
+                    width: 7rem;
+                    height: 7rem;
+                    object-fit: cover;
+                    border-radius: 0.8rem;
+                    margin-right: 1rem;
+                }
+                h3{
+                    font-family: "comfortaa", sans-serif;
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                    color: #ffffff;
+                }
+                .delete-button{
+                    font-size: 2.4rem;
+                    color: #b88efc;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
