@@ -1,7 +1,8 @@
 import "./bookMark.css";
-import demoImg from "../assets/images/demo.jpg";
+import noImg from "../assets/images/no-img.png";
 
-const BookMark = ({ show, onClose }) => {
+
+const BookMark = ({ show, onClose, bookMarks, deleteBookMark }) => {
   if (!show) return null;
   return (
     <div>
@@ -12,16 +13,19 @@ const BookMark = ({ show, onClose }) => {
           </span>
           <h2 className="bookMark-head">Bookmarked News</h2>
           <div className="bookMark-list">
-            <div className="bookMark-item">
-              <img src={demoImg} alt="" />
+            {bookMarks && bookMarks.map((bookMarkItem)=>(
+              <div className="bookMark-item">
+              <img src={bookMarkItem?.image || noImg} alt={bookMarkItem?.title} />
               <h3>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Consequatur, soluta!
+                {bookMarkItem?.title}
               </h3>
-              <span className="delete-button">
+              <span className="delete-button" onClick={(e)=>{
+                e.stopPropagation();
+                deleteBookMark(bookMarkItem)}}>
                 <i className="fa-regular fa-circle-xmark"></i>
               </span>
             </div>
+            ))}
           </div>
         </div>
       </div>

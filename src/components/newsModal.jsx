@@ -1,4 +1,5 @@
 import "./newsModal.css";
+import noImg from "../assets/images/no-img.png";
 
 const NewsModal = ({ show, article, onClose }) => {
   if (!show) return null;
@@ -10,7 +11,7 @@ const NewsModal = ({ show, article, onClose }) => {
         </span>
         {article && (
           <>
-            <img src={article?.image} alt={article?.title} />
+            <img src={article?.image || noImg} alt={article?.title} />
             <h2 className="modal-title">{article?.title}</h2>
             <p className="modal-source">Source: {article?.source.name}</p>
             <p className="modal-date">

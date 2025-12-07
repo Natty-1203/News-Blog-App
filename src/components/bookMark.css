@@ -38,6 +38,8 @@
             display: flex;
             flex-direction: column;
             gap: 1rem;
+            max-height: 60vh;
+            overflow-y: auto;
             .bookMark-item{
                 display: flex;
                 justify-content: space-between;

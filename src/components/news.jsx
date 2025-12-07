@@ -18,6 +18,7 @@ const News = () => {
   const [selectedArticle, setSelectedArticle] = useState(null);
   const [showArticleModal, setShowArticleModal] = useState(false);
   const [showBookMarkModal, setShowBookMarkModal] = useState(false);
+  const [bookMarks, setBookMarks] = useState([]);
 
   const catagories = [
     "general",
@@ -35,7 +36,7 @@ const News = () => {
     const fatchNews = async () => {
       let url = `https://gnews.io/api/v4/top-headlines?category=${selectedCatagory}&lang=en&apikey=${ApiKey}`;
       if (searchQuery)
-        url = `https://gnews.io/api/v4/search?q=${searchQuery}&lang=en&apikey=${ApiKey}`;
+        url = `https://gnews.io/api/v4/search?q=${searchQuery || "general"}&lang=en&apikey=${ApiKey}`;
       const response = await axios.get(url);
       const fatchedNews = response.data.articles;
       fatchedNews.forEach((article) => {
@@ -43,6 +44,8 @@ const News = () => {
       });
       setHeadlineData(fatchedNews[0]);
       setNewsData(fatchedNews.slice(1, 7));
+      const storedBookMarks = JSON.parse(localStorage.getItem("bookMarks")) || [];
+      setBookMarks(storedBookMarks);
     };
     fatchNews();
   }, [selectedCatagory, searchQuery]);
@@ -64,6 +67,15 @@ const News = () => {
   const handleBookMark = () => {
     setShowBookMarkModal(true);
   };
+  const handleBookMarksClick = (article) => {
+    setBookMarks((prev)=>{
+      const updatedBookMarks = prev.find((bookMark)=> bookMark.title === article.title) ?
+      prev.filter((bookMark)=> bookMark.title !== article.title) : [...prev, article];
+      localStorage.setItem("bookMarks", JSON.stringify(updatedBookMarks));
+      return updatedBookMarks;
+    }
+    )
+  }
 
   return (
     <div className="news">
@@ -86,7 +98,7 @@ const News = () => {
       <div className="news-content">
         <div className="navbar">
           <div className="user">
-            <img src={userImg} alt="user Img" />
+            <img src={userImg || noImg} alt="user Img" />
             <p>Mar's Blog</p>
           </div>
           <nav className="categories">
@@ -114,7 +126,12 @@ const News = () => {
             <img src={headlineData?.image || noImg} alt={headlineData?.title} />
             <h2 className="headline-title">
               {headlineData?.title}{" "}
-              <i className="fa-regular fa-bookmark bookmark"></i>
+              <i className={`${bookMarks.some((bookMark)=> bookMark.title === headlineData?.title)?"fa-solid" : "fa-regular"} fa-bookmark bookmark`}
+                onClick={(e)=>{
+                  e.stopPropagation();
+                  handleBookMarksClick(headlineData)
+                }}
+                ></i>
             </h2>
           </div>
           <div className="news-grid">
@@ -127,7 +144,12 @@ const News = () => {
                 <img src={article.image || noImg} alt={article.title} />
                 <h3>
                   {article.title}
-                  <i className="fa-regular fa-bookmark bookmark"></i>
+                  <i className={`${bookMarks.some((bookMark)=> bookMark.title === article?.title)?"fa-solid" : "fa-regular"} fa-bookmark bookmark`}
+                onClick={(e)=>{
+                  e.stopPropagation();
+                  handleBookMarksClick(article)
+                }}
+                ></i>
                 </h3>
               </div>
             ))}
@@ -142,6 +164,8 @@ const News = () => {
         <BookMark
           show={showBookMarkModal}
           onClose={() => setShowBookMarkModal(false)}
+          bookMarks={bookMarks}
+          deleteBookMark={handleBookMarksClick}
         />
 
         <div className="weather-calander">
