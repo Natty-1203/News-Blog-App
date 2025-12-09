@@ -1,7 +1,109 @@
-.weather{
+.weather {
     width: 100%;
     min-width: 28rem;
     height: 45%;
     background-color: #111214;
     border-radius: 1rem;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+
+    .search {
+        display: flex;
+        flex-direction: column;
+        row-gap: 1rem;
+
+        .search-top {
+            display: flex;
+            align-items: center;
+            column-gap: 1rem;
+
+            i {
+                font-size: 1.5rem;
+                color: #dddddd;
+            }
+
+            .location {
+                font-family: "comfortaa", sans-serif;
+                font-size: 1.8rem;
+                font-weight: bold;
+                color: #fff;
+
+            }
+        }
+
+        .search-location {
+            position: relative;
+
+            input {
+                width: clamp(15rem, 14cqi, 25rem);
+                height: 4rem;
+                border: none;
+                background-color: transparent;
+                border-bottom: 0.1rem solid #aaa;
+                font-size: 1.5rem;
+                color: #ddd;
+            }
+
+            i {
+                position: absolute;
+                top: 50%;
+                right: 1rem;
+                transform: translateY(-50%);
+                font-size: 1.8rem;
+                color: #fff;
+                cursor: pointer;
+            }
+        }
+
+    }
+
+    .not-found {
+        font-family: "comforta" sans-serif;
+        font-size: 1.2rem;
+        color: #ddd;
+        margin-bottom: 12rem;
+    }
+
+    .weather-data {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 2rem;
+
+        i {
+            font-size: 5rem;
+        }
+
+        i.fa-sun {
+            color: #ffc87c;
+        }
+
+        i.fa-cloud {
+            color: #fff;
+        }
+
+        i.fa-cloud-rain {
+            color: #5fa1f9;
+        }
+
+        i.fa-cloud-bolt {
+            color: #154abd;
+        }
+
+        i.fa-snowflake {
+            color: #52e5e7;
+        }
+
+        .weather-type,
+        .temp {
+            font-family: "comfortaa", sans-serif;
+            font-size: 2rem;
+            color: #ddd;
+        }
+    }
+
 }
