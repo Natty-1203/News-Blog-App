@@ -34,9 +34,11 @@ const News = () => {
 
   useEffect(() => {
     const fatchNews = async () => {
-      let url = `https://gnews.io/api/v4/top-headlines?category=${selectedCatagory}&lang=en&apikey=${ApiKey}`;
+      let url = `/gnews/api/v4/top-headlines?category=${selectedCatagory}&lang=en&apikey=${ApiKey}`;
       if (searchQuery)
-        url = `https://gnews.io/api/v4/search?q=${searchQuery || "general"}&lang=en&apikey=${ApiKey}`;
+        url = `/gnews/api/v4/search?q=${
+          searchQuery || "general"
+        }&lang=en&apikey=${ApiKey}`;
       const response = await axios.get(url);
       const fatchedNews = response.data.articles;
       fatchedNews.forEach((article) => {
@@ -44,7 +46,8 @@ const News = () => {
       });
       setHeadlineData(fatchedNews[0]);
       setNewsData(fatchedNews.slice(1, 7));
-      const storedBookMarks = JSON.parse(localStorage.getItem("bookMarks")) || [];
+      const storedBookMarks =
+        JSON.parse(localStorage.getItem("bookMarks")) || [];
       setBookMarks(storedBookMarks);
     };
     fatchNews();
@@ -68,14 +71,16 @@ const News = () => {
     setShowBookMarkModal(true);
   };
   const handleBookMarksClick = (article) => {
-    setBookMarks((prev)=>{
-      const updatedBookMarks = prev.find((bookMark)=> bookMark.title === article.title) ?
-      prev.filter((bookMark)=> bookMark.title !== article.title) : [...prev, article];
+    setBookMarks((prev) => {
+      const updatedBookMarks = prev.find(
+        (bookMark) => bookMark?.title === article.title
+      )
+        ? prev.filter((bookMark) => bookMark?.title !== article.title)
+        : [...prev, article];
       localStorage.setItem("bookMarks", JSON.stringify(updatedBookMarks));
       return updatedBookMarks;
-    }
-    )
-  }
+    });
+  };
 
   return (
     <div className="news">
@@ -126,12 +131,19 @@ const News = () => {
             <img src={headlineData?.image || noImg} alt={headlineData?.title} />
             <h2 className="headline-title">
               {headlineData?.title}{" "}
-              <i className={`${bookMarks.some((bookMark)=> bookMark.title === headlineData?.title)?"fa-solid" : "fa-regular"} fa-bookmark bookmark`}
-                onClick={(e)=>{
+              <i
+                className={`${
+                  bookMarks.some(
+                    (bookMark) => bookMark?.title === headlineData?.title
+                  )
+                    ? "fa-solid"
+                    : "fa-regular"
+                } fa-bookmark bookmark`}
+                onClick={(e) => {
                   e.stopPropagation();
-                  handleBookMarksClick(headlineData)
+                  handleBookMarksClick(headlineData);
                 }}
-                ></i>
+              ></i>
             </h2>
           </div>
           <div className="news-grid">
@@ -144,12 +156,19 @@ const News = () => {
                 <img src={article.image || noImg} alt={article.title} />
                 <h3>
                   {article.title}
-                  <i className={`${bookMarks.some((bookMark)=> bookMark.title === article?.title)?"fa-solid" : "fa-regular"} fa-bookmark bookmark`}
-                onClick={(e)=>{
-                  e.stopPropagation();
-                  handleBookMarksClick(article)
-                }}
-                ></i>
+                  <i
+                    className={`${
+                      bookMarks.some(
+                        (bookMark) => bookMark?.title === article?.title
+                      )
+                        ? "fa-solid"
+                        : "fa-regular"
+                    } fa-bookmark bookmark`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleBookMarksClick(article);
+                    }}
+                  ></i>
                 </h3>
               </div>
             ))}
@@ -173,7 +192,12 @@ const News = () => {
           <Calander />
         </div>
       </div>
-      <footer className="news-footer">footer</footer>
+      <footer className="news-footer">
+        <p>
+          <span>News & Blogs App</span>
+        </p>
+        <p>&copy; All Right Reserved. By Code and Create</p>
+      </footer>
     </div>
   );
 };

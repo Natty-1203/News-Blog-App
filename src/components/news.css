@@ -238,5 +238,18 @@
         min-height: 5rem;
         background-color: #111214;
         border-radius: 0 0 1rem 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 4rem;
+        p{
+            font-size: 1.4rem;
+            font-weight: 300;
+            color: #bbb;
+            span{
+                font-size: 2rem;
+                font-family: "Bebas Neue", sans-serif;
+            }
+        }
     }
 }
