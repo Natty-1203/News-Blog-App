@@ -1,7 +1,7 @@
 import React from "react";
 import "./calander.css";
 
-const Calander = () => {
+const Calender = () => {
   const [currentMonth, setCurrentMonth] = React.useState(new Date().getMonth());
   const [currentYear, setCurrentYear] = React.useState(
     new Date().getFullYear()
@@ -24,7 +24,7 @@ const Calander = () => {
   const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
   const firstDayInMonth = new Date(currentYear, currentMonth, 1).getDay();
   return (
-    <div className="calander">
+    <div className="calender">
       <div className="nav-date">
         <h2 className="month">{monthNames[currentMonth]}</h2>
         <h2 className="year">{currentYear}</h2>
@@ -80,4 +80,4 @@ const Calander = () => {
   );
 };
 
-export default Calander;
+export default Calender;

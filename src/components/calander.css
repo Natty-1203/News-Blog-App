@@ -1,4 +1,4 @@
-.calander {
+.calender {
     width: 100%;
     min-width: 28rem;
     height: calc(55% - 2rem);
@@ -87,4 +87,10 @@
             background: linear-gradient(to right, #b88efc, #6877f4);
         }
     }
+}
+
+@media (max-width: 900px) {
+  .calendar {
+    height: 100%;
+  }
 }

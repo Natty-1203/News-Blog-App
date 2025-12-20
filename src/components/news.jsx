@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./news.css";
 import Weather from "./weather";
-import Calander from "./calander";
+import Calender from "./calander";
 import NewsModal from "./newsModal";
 import BookMark from "./bookMark";
+import BlogsModal from "./blogsModal";
 import userImg from "../assets/images/user.jpg";
 import noImg from "../assets/images/no-img.png";
 
-const News = () => {
+const News = ({ onShowBlogs, blogs, onEditBlog, onDeleteBlog }) => {
   const ApiKey = import.meta.env.VITE_GNEWS_API_KEY;
   const [newsData, setNewsData] = useState([]);
   const [headlineData, setHeadlineData] = useState(null);
@@ -19,6 +20,8 @@ const News = () => {
   const [showArticleModal, setShowArticleModal] = useState(false);
   const [showBookMarkModal, setShowBookMarkModal] = useState(false);
   const [bookMarks, setBookMarks] = useState([]);
+   const [selectedPost, setSelectedPost] = useState(null)
+  const [showBlogModal, setShowBlogModal] = useState(false)
 
   const catagories = [
     "general",
@@ -82,6 +85,16 @@ const News = () => {
     });
   };
 
+   const handleBlogClick = (blog) => {
+    setSelectedPost(blog)
+    setShowBlogModal(true)
+  }
+
+  const closeBlogModal = () => {
+    setShowBlogModal(false)
+    setSelectedPost(null)
+  }
+
   return (
     <div className="news">
       <header className="news-header">
@@ -102,7 +115,7 @@ const News = () => {
       </header>
       <div className="news-content">
         <div className="navbar">
-          <div className="user">
+          <div className="user" onClick={onShowBlogs}>
             <img src={userImg || noImg} alt="user Img" />
             <p>Mar's Blog</p>
           </div>
@@ -179,7 +192,6 @@ const News = () => {
           article={selectedArticle}
           onClose={() => setShowArticleModal(false)}
         />
-        <div className="my-blogs">my blog</div>
         <BookMark
           show={showBookMarkModal}
           onClose={() => setShowBookMarkModal(false)}
@@ -187,9 +199,38 @@ const News = () => {
           deleteBookMark={handleBookMarksClick}
         />
 
-        <div className="weather-calander">
+         <div className="my-blogs">
+          <h1 className="my-blogs-heading">My Blogs</h1>
+          <div className="blog-posts">
+            {blogs.map((blog, index) => (
+              <div key={index} className="blog-post" onClick={() => handleBlogClick(blog)}>
+                <img src={blog.image || noImg} alt={blog.title} />
+                <h3>{blog.title}</h3>
+                <div className="post-buttons">
+                  <button className="edit-post" onClick={() => onEditBlog(blog)}>
+                    <i className="fa-solid fa-pen-to-square"></i>
+                  </button>
+                  <button
+                    className="delete-post"
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      onDeleteBlog(blog)
+                    }}
+                  >
+                    <i className="fa-regular fa-circle-xmark"></i>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+           {selectedPost && showBlogModal && (
+            <BlogsModal show={showBlogModal} blog={selectedPost} onClose={closeBlogModal} />
+          )}
+          </div>   
+
+        <div className="weather-calendar">
           <Weather />
-          <Calander />
+          <Calender />
         </div>
       </div>
       <footer className="news-footer">

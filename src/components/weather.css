@@ -107,3 +107,13 @@
     }
 
 }
+
+@media (max-width: 900px) {
+  .weather {
+    height: 100%;
+  }
+
+  .search-location input {
+    width: 30rem;
+  }
+}
