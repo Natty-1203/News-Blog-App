@@ -64,6 +64,12 @@ html{
 @media (max-width: 500px) {
   html {
     font-size: 55%;
+    *{::-webkit-scrollbar{
+      display: none;
+    }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
   }
 }
 

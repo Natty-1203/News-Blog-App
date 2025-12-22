@@ -113,7 +113,7 @@
     height: 100%;
   }
 
-  .search-location input {
+  .weather .search .search-location input {
     width: 30rem;
   }
 }

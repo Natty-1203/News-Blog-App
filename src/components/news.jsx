@@ -98,7 +98,7 @@ const News = ({ onShowBlogs, blogs, onEditBlog, onDeleteBlog }) => {
   return (
     <div className="news">
       <header className="news-header">
-        <h1 className="logo">News& Blogs</h1>
+        <h1 className="logo">News & Blogs</h1>
         <div className="search-bar">
           <form onSubmit={(e) => handleSearch(e)}>
             <input
@@ -199,10 +199,10 @@ const News = ({ onShowBlogs, blogs, onEditBlog, onDeleteBlog }) => {
           deleteBookMark={handleBookMarksClick}
         />
 
-         <div className="my-blogs">
+         {blogs.length !== 0 && <div className="my-blogs">
           <h1 className="my-blogs-heading">My Blogs</h1>
           <div className="blog-posts">
-            {blogs.map((blog, index) => (
+            {blogs.map((blog, index) => ( 
               <div key={index} className="blog-post" onClick={() => handleBlogClick(blog)}>
                 <img src={blog.image || noImg} alt={blog.title} />
                 <h3>{blog.title}</h3>
@@ -226,7 +226,7 @@ const News = ({ onShowBlogs, blogs, onEditBlog, onDeleteBlog }) => {
            {selectedPost && showBlogModal && (
             <BlogsModal show={showBlogModal} blog={selectedPost} onClose={closeBlogModal} />
           )}
-          </div>   
+          </div>   }
 
         <div className="weather-calendar">
           <Weather />
