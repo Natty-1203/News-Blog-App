@@ -39,7 +39,7 @@ const News = ({ onShowBlogs, blogs, onEditBlog, onDeleteBlog }) => {
     const fatchNews = async () => {
       let url = `https://gnews.io/api/v4/top-headlines?category=${selectedCatagory}&lang=en&apikey=${ApiKey}`;
       if (searchQuery)
-        url = `/gnews/api/v4/search?q=${
+        url = `https://gnews.io/api/v4/search?q=${
           searchQuery || "general"
         }&lang=en&apikey=${ApiKey}`;
       const response = await axios.get(url);
