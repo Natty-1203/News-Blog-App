@@ -37,12 +37,10 @@ const News = ({ onShowBlogs, blogs, onEditBlog, onDeleteBlog }) => {
 
   useEffect(() => {
     const fatchNews = async () => {
-      const proxy = 'https://corsproxy.io/?';
-      let url = `${proxy}https://gnews.io/api/v4/top-headlines?category=${selectedCatagory}&lang=en&apikey=${ApiKey}`;
+      
+      let url = `/api/fetchNews?category=${selectedCatagory}`;
       if (searchQuery)
-        url = `${proxy}https://gnews.io/api/v4/search?q=${
-          searchQuery || "general"
-        }&lang=en&apikey=${ApiKey}`;
+        url = `/api/fetchNews?type=search&q=${searchQuery}`;
       const response = await axios.get(url);
       const fatchedNews = response.data.articles;
       fatchedNews.forEach((article) => {
