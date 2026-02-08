@@ -1,6 +1,6 @@
 export default async function handler(req, res) {
   const { category, q, type } = req.query;
-  const ApiKey = import.meta.env.VITE_GNEWS_API_KEY;
+  const ApiKey = "fa91dc2f307ad9d0dd0ac178129fa096";
 
   let url = type === 'search'
     ? `https://gnews.io/api/v4/search?q=${q || "general"}&lang=en&apikey=${ApiKey}`
