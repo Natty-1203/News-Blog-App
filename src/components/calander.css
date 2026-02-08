@@ -1,5 +1,7 @@
+
 .calender {
     width: 100%;
+    max-width: 56rem;
     min-width: 28rem;
     height: calc(55% - 2rem);
     background-color: #111214;
