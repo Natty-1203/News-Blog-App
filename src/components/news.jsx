@@ -6,7 +6,7 @@ import Calender from "./calander";
 import NewsModal from "./newsModal";
 import BookMark from "./bookMark";
 import BlogsModal from "./blogsModal";
-import userImg from "../assets/images/B_F.jpg";
+import userImg from "../assets/images/user.jpg";
 import noImg from "../assets/images/no-img.png";
 
 const News = ({ onShowBlogs, blogs, onEditBlog, onDeleteBlog }) => {
