@@ -42,11 +42,12 @@ const News = ({ onShowBlogs, blogs, onEditBlog, onDeleteBlog }) => {
       if (searchQuery)
         url = `/api/fetchNews?type=search&q=${searchQuery}`;
       const response = await axios.get(url);
-      const fatchedNews = response.data.articles;
+      let fatchedNews = response.data?.articles || [];
+      if (!Array.isArray(fatchedNews)) fatchedNews = [];
       fatchedNews.forEach((article) => {
         if (!article.image) article.image = noImg;
       });
-      setHeadlineData(fatchedNews[0]);
+      setHeadlineData(fatchedNews[0] || null);
       setNewsData(fatchedNews.slice(1, 7));
       const storedBookMarks =
         JSON.parse(localStorage.getItem("bookMarks")) || [];

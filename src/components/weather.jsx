@@ -41,20 +41,20 @@ const Weather = () => {
   const getWeatherIcons = (weatherType) => {
     switch (weatherType) {
       case "Clear":
-        return <i class="fa-solid fa-sun"></i>;
+        return <i className="fa-solid fa-sun"></i>;
       case "Clouds":
-        return <i class="fa-solid fa-cloud"></i>;
+        return <i className="fa-solid fa-cloud"></i>;
       case "Rain":
-        return <i class="fa-solid fa-cloud-rain"></i>;
+        return <i className="fa-solid fa-cloud-rain"></i>;
       case "Thunderstorm":
-        return <i class="fa-solid fa-cloud-bolt"></i>;
+        return <i className="fa-solid fa-cloud-bolt"></i>;
       case "Snow":
-        return <i class="fa-regular fa-snowflake"></i>;
+        return <i className="fa-regular fa-snowflake"></i>;
       case "Haze":
       case "Mist":
-        return <i class="fa-solid fa-smog"></i>;
+        return <i className="fa-solid fa-smog"></i>;
       default:
-        return <i class="fa-solid fa-cloud"></i>;
+        return <i className="fa-solid fa-cloud"></i>;
     }
   };
 
