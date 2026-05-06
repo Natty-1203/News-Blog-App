@@ -16,6 +16,8 @@ Tech stack
 - LocalStorage for client-side persistence
 - Plain CSS modules under `src/components` for styling
 
+![Screenshot](public/NB-home.png "App Screenshot")
+
 Getting started
 1. Clone the repo and install dependencies:
 
